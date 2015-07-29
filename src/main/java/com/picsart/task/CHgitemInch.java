@@ -72,7 +72,6 @@ public class CHgitemInch {
         TopicMetadata topicMetadata = AdminUtils.fetchTopicMetadataFromZk(topicName, zkClient);
         int patritionCount = topicMetadata.partitionsMetadata().size();
 
-        System.out.println(patritionCount);
         threadNumbers = threadNumbers < patritionCount ? threadNumbers : patritionCount;
 
         Map<String, Integer> topicCountMap = new HashMap<String, Integer>();

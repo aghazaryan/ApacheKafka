@@ -32,15 +32,15 @@ public class Consuming implements Callable<List<BasicDBObject>> {
 
         List messages = new ArrayList<BasicDBObject>();
         try {
-            while (it.hasNext() && count++ != size) {
+            while (count++ != size && it.hasNext()) {
 
                 String str = new String(it.next().message());
-                System.out.println(str);
-                // Object o = com.mongodb.util.JSON.parse(str);
-                // BasicDBObject basicDBObject = (BasicDBObject) o;
-                //messages.add(basicDBObject);
+                // System.out.println(str);
+                Object o = com.mongodb.util.JSON.parse(str);
+                BasicDBObject basicDBObject = (BasicDBObject) o;
+                messages.add(basicDBObject);
 
-                messages.add(new BasicDBObject("key", str));
+               // messages.add(new BasicDBObject("key", str));
 
             }
         } finally {
